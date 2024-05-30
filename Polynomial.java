@@ -153,7 +153,13 @@ public class Polynomial {
 			}
 			String output = "";
 			for(int i=0; i<coefficients.length; i++) {
-				output += "+" + coefficients[i] + "x" + exponents[i];
+				output += "+" + coefficients[i];
+				if(exponents[i] >= 1) {
+					output += "x";
+				}
+				if(exponents[i] > 1) {
+					output += exponents[i];
+				}
 				if(i == 0) {
 					output = output.substring(1);
 				}
@@ -163,7 +169,7 @@ public class Polynomial {
 			bufferedWriter.write(output);
 			bufferedWriter.close();
 		}
-		catch(Exception e) {
+		catch (Exception e) {
 			System.out.println(e);
 		}
 	}

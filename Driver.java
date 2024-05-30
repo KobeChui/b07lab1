@@ -13,7 +13,7 @@ public class Driver {
 		if(s.hasRoot(1)) {
 			System.out.println("1 is a root of s");
 		}
-		else{
+		else {
 			System.out.println("1 is not a root of s");
 		}
 	}
