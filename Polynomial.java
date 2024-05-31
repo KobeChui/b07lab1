@@ -46,11 +46,30 @@ public class Polynomial {
 					counter++;
 					break;
 				}
-			}
-			
+			}	
 		}
 		Polynomial sum = new Polynomial(coef, exp);
-		return sum;
+		return sum.clean();
+	}
+	Polynomial clean() {
+		int counter = coefficients.length;
+		for(double a: coefficients) {
+			if (a == 0) {
+				counter--;
+			}
+		}
+		
+		double[] newCoef = new double[counter];
+		int[] newExp = new int[counter];
+		for(int i=0, j=0; i<coefficients.length && j< newCoef.length; i++) {
+			if (coefficients[i] != 0) {
+				 newCoef[j] = coefficients[i];
+				 newExp[j] = exponents[i];
+				 j++;
+			}
+		}
+		Polynomial result = new Polynomial(newCoef, newExp);
+		return result;
 	}
 	
 	double evaluate(double value) {
@@ -133,8 +152,9 @@ public class Polynomial {
 				
 				counter++;
 			}
-			coefficients = coef;
-			exponents = exp;
+			Polynomial temp = (new Polynomial(coef, exp)).clean();
+			coefficients = temp.coefficients;
+			exponents = temp.exponents;
 			bufferedReader.close();
 		}
 		catch(Exception e) {
