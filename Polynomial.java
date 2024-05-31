@@ -105,7 +105,7 @@ public class Polynomial {
 	}
 	
 	public Polynomial(File file) {	
-		try{
+		try {
 			BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 			String poly = bufferedReader.readLine().replace("-", "+-");
 			if(poly.startsWith("+-")) {
